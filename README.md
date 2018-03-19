@@ -10,5 +10,6 @@ A set of prediction intervals is considered calibrated if the prescribed confide
 To compute prediction intervals for neural network regressors, the real-valued labels are binned into N classes, and the network is trained as a neural network classifier. The outputs of the classifier are the class logits - the activations of the top layer just before the softmax normalization. The main usage of the code in this repository is to compute calibrated prediction intervals, based on the output logits from a neural network. 
 
 Main functions:
+
 `get_calibrated_pis(algorithm, confidence_level, validation_logits, validation_real_labels, test_logits, bins, centers)`
 is the main function of the code. It implements the Temperature Scaling and Empirical Calibration algorithms from the paper "Calibrated Prediction Intervals for Neural Network Regressors". It chooses the algorithm hyperparameters using the validation set logits and real-valued labels, and uses these hyperparamters to compute prediction intervals for the test set with a given confidence level.
