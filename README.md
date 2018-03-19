@@ -14,6 +14,7 @@ Main functions:
 The the main function of the code. Implements the Temperature Scaling and Empirical Calibration algorithms from the paper "Calibrated Prediction Intervals for Neural Network Regressors". Chooses the algorithm hyperparameters using the validation set logits and real-valued labels, and uses these hyperparamters to compute prediction intervals for the test set with a given confidence level. Returns the endpoints of the calibrated prediction intervals for the test set. 
 
 In addition, there are two small helper functions to assist with training a neural network regressor with real-values labels binned into N classes.  
+
 2) `prepare_bins_and_centers(minval, maxval, nclasses)`.  
 Given minimum and maximum values, computes class boundaries for `nclasses` classes in this range. 
 
