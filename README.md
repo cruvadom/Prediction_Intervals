@@ -10,5 +10,14 @@ A set of prediction intervals is considered calibrated if the prescribed confide
 To compute prediction intervals for neural network regressors, the real-valued labels are binned into N classes, and the network is trained as a neural network classifier. The outputs of the classifier are the class logits - the activations of the top layer just before the softmax normalization. The main usage of the code in this repository is to compute calibrated prediction intervals, based on the output logits from a neural network. 
 
 Main functions:  
-`get_calibrated_pis(algorithm, confidence_level, validation_logits, validation_real_labels, test_logits, bins, centers)`  
-is the main function of the code. It implements the Temperature Scaling and Empirical Calibration algorithms from the paper "Calibrated Prediction Intervals for Neural Network Regressors". It chooses the algorithm hyperparameters using the validation set logits and real-valued labels, and uses these hyperparamters to compute prediction intervals for the test set with a given confidence level.
+1) `get_calibrated_pis(algorithm, confidence_level, validation_logits, validation_real_labels, test_logits, bins, centers)`.  
+The the main function of the code. Implements the Temperature Scaling and Empirical Calibration algorithms from the paper "Calibrated Prediction Intervals for Neural Network Regressors". Chooses the algorithm hyperparameters using the validation set logits and real-valued labels, and uses these hyperparamters to compute prediction intervals for the test set with a given confidence level. Returns the endpoints of the calibrated prediction intervals for the test set. 
+
+In addition, there are two small helper functions to assist with training a neural network regressor with real-values labels binned into N classes.  
+2) `prepare_bins_and_centers(minval, maxval, nclasses)`.  
+Given minimum and maximum values, computes class boundaries for `nclasses` classes in this range. 
+
+3) `create_class_labels(real_labels, bins)`.  
+Converts real-values labels into class labels. 
+
+For further questions, contant Gil Keren: cruvadom@gmail.com.
